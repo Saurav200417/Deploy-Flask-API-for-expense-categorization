@@ -3,5 +3,4 @@ services:
     type: web
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
-    plan: free
+  startCommand: gunicorn flaskapi.app:app
