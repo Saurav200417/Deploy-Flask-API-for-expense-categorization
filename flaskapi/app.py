@@ -17,12 +17,12 @@ with open('label_encoder.pkl', 'rb') as f:
 def predict():
     data = request.get_json()
     text = data.get('text', '')
-    
+
     # Preprocess input
     features = vectorizer.transform([text]).toarray()
     prediction = model.predict(features)
     predicted_class = label_encoder.inverse_transform([np.argmax(prediction)])
-    
+
     return jsonify({'category': predicted_class[0]})
 
 if __name__ == '__main__':
